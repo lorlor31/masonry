@@ -19,3 +19,22 @@ On va lancer le script **readImages.js** avec node qui va afficher dans le termi
 node readImages.js
 
 ```
+
+## PALETTES COULEURS
+
+Palette 1 : Minimaliste et Élégante
+Couleur du titre : Dégradé linear-gradient(45deg, #2C3E50, #4CA1AF) (Bleu foncé à bleu clair)
+Couleur de fond : #ECF0F1 (Gris clair)
+Bordure de l'image : #34495E (Gris bleuté)
+Palette 2 : Vibrante et Énergique
+Couleur du titre : Dégradé linear-gradient(45deg, #FF6F61, #D35400) (Corail à orange vif)
+Couleur de fond : #F7F8F8 (Blanc cassé)
+Bordure de l'image : #E67E22 (Orange)
+Palette 3 : Naturelle et Douce
+Couleur du titre : Dégradé linear-gradient(45deg, #27AE60, #2ECC71) (Vert émeraude à vert clair)
+Couleur de fond : #E8F8F5 (Bleu très clair)
+Bordure de l'image : #1ABC9C (Turquoise)
+Palette 4 : Sombre et Mystérieuse
+Couleur du titre : Dégradé linear-gradient(45deg, #8E44AD, #9B59B6) (Violet à lavande)
+Couleur de fond : #2C3E50 (Bleu foncé)
+Bordure de l'image : #9B59B6 (Lavande)

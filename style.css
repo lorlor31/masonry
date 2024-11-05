@@ -1,7 +1,8 @@
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    border: 0;
+    box-sizing: border-box; 
 }
 
 body {
@@ -11,8 +12,8 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: black;
-    /* background-color: #f0f0f0;  */
+    background-color:#131313;
+    transition: background-color 0.5s; /* Transition pour le changement de couleur */
 }
 /* Style du masonry gallery */
 .gallery {
@@ -20,14 +21,16 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Colonnes adaptatives */
     grid-auto-rows: 200px; /* Hauteur de base pour chaque ligne */
     grid-auto-flow: dense;
-    gap: 10px;
+    /* gap: 10px; */
     width: 90%;
     max-width: 1200px;
     margin: auto;
 }
 
 .gallery-item {
-    overflow: hidden;
+    margin : 0.6rem  ;
+
+    overflow: visible;
     border-radius: 8px;
     /* height: 200px; */
     display: flex;
@@ -40,6 +43,13 @@ body {
     height: 100%;
     /* display: block; // est c eutile */
     object-fit: cover;
+    /* margin-top: 20px; Espacement entre le titre et l'image */
+    border: 4px solid #881bc7; /* Bordure orange */
+    border-radius: 10px; /* Arrondir les coins */
+    /* width: 300px;  */
+    /* height: auto;  */
+    /* Maintient le ratio de l'image */
+    box-sizing: content-box;
 }
 
 /* Styles pour les images grandes qui prennent plus d'espace */
@@ -62,7 +72,21 @@ body {
 .gradient-text {
     font-size: 4rem; /* Taille du texte */
     font-weight: bold;
-    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Dégradé inspiré d'un coucher de soleil */
+    background: linear-gradient(45deg, 
+    #FF6F61,   /* Corail */
+    #FFB300,   /* Jaune moutarde */
+    #A8D68E,   /* Vert tendre */
+    #6FB3C8,   /* Bleu pastel */
+    #6A5B8A,   /* Lavande grisée */
+    #FFA07A,   /* Saumon clair */
+    #FFD700,   /* Or */
+    #B0E0E6,   /* Bleu poudre */
+    #DDA0DD,   /* Prune clair */
+    #FF8C00    /* Orange vif */
+);
+
+    /* background: linear-gradient(45deg, #2C3E50, #4CA1AF);  */
+    /* Dégradé inspiré d'un coucher de soleil */
     background-size: 400% 400%; /* Permet une animation fluide si souhaitée */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Remplit le texte avec le dégradé */
@@ -82,3 +106,38 @@ body {
         background-position: 0% 50%;
     }
 }
+
+/* Style du pimper */
+.pimper {
+    margin : 1rem ;
+}
+
+/* Style de la popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir avec transparence */
+    display: none; /* Masqué par défaut */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Pour s'assurer qu'il soit au-dessus des autres éléments */
+}
+
+.popup img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px; /* Pour arrondir les coins de l'image */
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
