@@ -28,6 +28,15 @@ mkdir -p /images/webp_output
 cd /images
 mogrify -path ./webp_output -format webp *.png *.jpg
 ```
+
+## COMPRESSER MES WEBP POUR REDUIRE LEUR TAILLE
+```
+for img in ./img/webp/*.webp; do
+  magick "$img" -define webp:quality=80 -resize "1000x1000>" "./img/webp/comp/$(basename "$img")"
+done
+```
+Si `magick`ne fonctionne pas, remplacer par `convert`
+
 ## PALETTES COULEURS
 
 Palette 1 : Minimaliste et Élégante

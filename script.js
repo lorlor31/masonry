@@ -317,9 +317,9 @@ function generateGallery() {
 
         // Crée l'élément img
         const imgElement = document.createElement('img');
-        imgElement.src = `./img/img-webp/${image.nom}.webp`;
+        imgElement.src = `./img/webp/comp/${image.nom}.webp`;
         imgElement.alt = `Image ${image.nom}`;
-        imgElement.loading="lazy";
+        // imgElement.loading="lazy";
          // Ajoute la classe "large" ou "xlarge" si spécifié
          if (image.taille === 'large') {
             galleryItem.classList.add('large');
@@ -360,39 +360,14 @@ function generateGallery() {
 
         let hoverTimeout; // Variable pour le délai de survol
         let hoverOutTimeout; // Variable pour le délai de survol
-        let popupTimeout; // Variable pour le délai de visibilité du popup
         // Afficher au ckick
         imgElement.addEventListener('click', () => {
               popup.style.display = 'flex'; // Affiche le popup
               popupDisplayState = true ;             
         });
-        // Événements pour afficher le popup lors du survol de l'image
-        imgElement.addEventListener('mouseenter', () => {
-            // Mettre un délai avant d'afficher le popup
-            hoverTimeout = setTimeout(() => {
-                clearTimeout(hoverOutTimeout);
-                popup.style.display = 'flex'; // Affiche le popup
-                popupDisplayState = true ;
-                // // Rendre le popup visible pendant 1 seconde
-                // popupTimeout = setTimeout(() => {
-                //     popup.style.display = 'none'; // Cache le popup après 1 seconde
-                // }, 1000); // Délai de 1000 ms (1 seconde)
-            }, 100); // Délai de 300 ms avant d'afficher le popup
-        });
-        // A REVOIR
-            imgElement.addEventListener('mouseleave', () => {
-                hoverOutTimeout = setTimeout(() => {
-                clearTimeout(hoverTimeout); // Annule le délai si la souris quitte l'image
-                clearTimeout(popupTimeout); // Annule le délai de fermeture si le popup est visible
-                popup.style.display = 'none'; // Cache le popup
-            },500);
-        });
-        
-        // imgElement.addEventListener('mouseleave', () => {
-        //     clearTimeout(hoverTimeout); // Annule le délai si la souris quitte l'image
-        //     clearTimeout(popupTimeout); // Annule le délai de fermeture si le popup est visible
-        //     popup.style.display = 'none'; // Cache le popup
-        // });
+        let popupTimeout;   // Stocke le délai
+let lastMousePosition = { x: 0, y: 0 };  // Position initiale de la souris
+
 
         // Fermer le popup en cliquant à l'extérieur de l'image
         popup.addEventListener('click', (event) => {
@@ -420,41 +395,41 @@ generateGallery();
 applyRandomBorderColors();
 
 // Gestion du pimper
-document.getElementById("palette-select").addEventListener("change", function() {
-    const selectedPalette = this.value;
-    const body = document.body;
-    const title = document.querySelector(".gradient-text");
-    const image = document.querySelector(".gallery-item img ");
+// document.getElementById("palette-select").addEventListener("change", function() {
+//     const selectedPalette = this.value;
+//     const body = document.body;
+//     const title = document.querySelector(".gradient-text");
+//     const image = document.querySelector(".gallery-item img ");
 
-    switch (selectedPalette) {
-        case "palette1":
-            body.style.backgroundColor = "#ECF0F1"; // Gris clair
-            title.style.background = "linear-gradient(45deg, #2C3E50, #4CA1AF)"; // Dégradé bleu
-            title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
-            title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
-            // image.style.border = "5px solid #34495E"; // Bordure gris bleuté
-            break;
-        case "palette2":
-            body.style.backgroundColor = "#F7F8F8"; // Blanc cassé
-            title.style.background = "linear-gradient(45deg, #FF6F61, #D35400)"; // Dégradé corail à orange
-            title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
-            title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
-            // image.style.border = "5px solid #E67E22"; // Bordure orange
-            break;
-        case "palette3":
-            body.style.backgroundColor = "#E8F8F5"; // Bleu très clair
-            title.style.background = "linear-gradient(45deg, #27AE60, #2ECC71)"; // Dégradé vert
-            title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
-            title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
-            // image.style.border = "5px solid #1ABC9C"; // Bordure turquoise
-            break;
-        case "palette4":
-            body.style.backgroundColor = "#2C3E50"; // Bleu foncé
-            title.style.background = "linear-gradient(45deg, #8E44AD, #9B59B6)"; // Dégradé violet
-            title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
-            title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
-            // image.style.border = "5px solid #9B59B6"; // Bordure lavande
-            break;
-    }
-});
+//     switch (selectedPalette) {
+//         case "palette1":
+//             body.style.backgroundColor = "#ECF0F1"; // Gris clair
+//             title.style.background = "linear-gradient(45deg, #2C3E50, #4CA1AF)"; // Dégradé bleu
+//             title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
+//             title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
+//             // image.style.border = "5px solid #34495E"; // Bordure gris bleuté
+//             break;
+//         case "palette2":
+//             body.style.backgroundColor = "#F7F8F8"; // Blanc cassé
+//             title.style.background = "linear-gradient(45deg, #FF6F61, #D35400)"; // Dégradé corail à orange
+//             title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
+//             title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
+//             // image.style.border = "5px solid #E67E22"; // Bordure orange
+//             break;
+//         case "palette3":
+//             body.style.backgroundColor = "#E8F8F5"; // Bleu très clair
+//             title.style.background = "linear-gradient(45deg, #27AE60, #2ECC71)"; // Dégradé vert
+//             title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
+//             title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
+//             // image.style.border = "5px solid #1ABC9C"; // Bordure turquoise
+//             break;
+//         case "palette4":
+//             body.style.backgroundColor = "#2C3E50"; // Bleu foncé
+//             title.style.background = "linear-gradient(45deg, #8E44AD, #9B59B6)"; // Dégradé violet
+//             title.style.webkitBackgroundClip = "text"; // Assurez-vous que le clip fonctionne
+//             title.style.webkitTextFillColor = "transparent"; // Assurez-vous que le texte est transparent
+//             // image.style.border = "5px solid #9B59B6"; // Bordure lavande
+//             break;
+//     }
+// });
 
