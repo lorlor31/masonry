@@ -319,7 +319,7 @@ function generateGallery() {
         const imgElement = document.createElement('img');
         imgElement.src = `./img/img-webp/${image.nom}.webp`;
         imgElement.alt = `Image ${image.nom}`;
-
+        imgElement.loading="lazy";
          // Ajoute la classe "large" ou "xlarge" si spécifié
          if (image.taille === 'large') {
             galleryItem.classList.add('large');
@@ -367,7 +367,7 @@ function generateGallery() {
               popupDisplayState = true ;             
         });
         // Événements pour afficher le popup lors du survol de l'image
-        imgElement.addEventListener('click', () => {
+        imgElement.addEventListener('mouseenter', () => {
             // Mettre un délai avant d'afficher le popup
             hoverTimeout = setTimeout(() => {
                 clearTimeout(hoverOutTimeout);
@@ -377,16 +377,16 @@ function generateGallery() {
                 // popupTimeout = setTimeout(() => {
                 //     popup.style.display = 'none'; // Cache le popup après 1 seconde
                 // }, 1000); // Délai de 1000 ms (1 seconde)
-            }, 300); // Délai de 300 ms avant d'afficher le popup
+            }, 100); // Délai de 300 ms avant d'afficher le popup
         });
         // A REVOIR
-        //     imgElement.addEventListener('mouseleave', () => {
-        //         hoverOutTimeout = setTimeout(() => {
-        //         clearTimeout(hoverTimeout); // Annule le délai si la souris quitte l'image
-        //         clearTimeout(popupTimeout); // Annule le délai de fermeture si le popup est visible
-        //         popup.style.display = 'none'; // Cache le popup
-        //     },500);
-        // });
+            imgElement.addEventListener('mouseleave', () => {
+                hoverOutTimeout = setTimeout(() => {
+                clearTimeout(hoverTimeout); // Annule le délai si la souris quitte l'image
+                clearTimeout(popupTimeout); // Annule le délai de fermeture si le popup est visible
+                popup.style.display = 'none'; // Cache le popup
+            },500);
+        });
         
         // imgElement.addEventListener('mouseleave', () => {
         //     clearTimeout(hoverTimeout); // Annule le délai si la souris quitte l'image
