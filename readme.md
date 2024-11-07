@@ -19,7 +19,15 @@ On va lancer le script **readImages.js** avec node qui va afficher dans le termi
 node readImages.js
 
 ```
+## CONVERTIR LES JPG EN WEBP
 
+Installer ImageMagick, créer un dossier et y exécuter la conversion
+```
+sudo apt-get install imagemagick
+mkdir -p /images/webp_output
+cd /images
+mogrify -path ./webp_output -format webp *.png *.jpg
+```
 ## PALETTES COULEURS
 
 Palette 1 : Minimaliste et Élégante

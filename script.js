@@ -317,7 +317,7 @@ function generateGallery() {
 
         // Crée l'élément img
         const imgElement = document.createElement('img');
-        imgElement.src = `./img/${image.nom}.jpg`;
+        imgElement.src = `./img/img-webp/${image.nom}.jpg`;
         imgElement.alt = `Image ${image.nom}`;
 
          // Ajoute la classe "large" ou "xlarge" si spécifié
