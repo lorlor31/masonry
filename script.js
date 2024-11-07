@@ -317,7 +317,7 @@ function generateGallery() {
 
         // Crée l'élément img
         const imgElement = document.createElement('img');
-        imgElement.src = `./img/img-webp/${image.nom}.jpg`;
+        imgElement.src = `./img/img-webp/${image.nom}.webp`;
         imgElement.alt = `Image ${image.nom}`;
 
          // Ajoute la classe "large" ou "xlarge" si spécifié
@@ -361,6 +361,11 @@ function generateGallery() {
         let hoverTimeout; // Variable pour le délai de survol
         let hoverOutTimeout; // Variable pour le délai de survol
         let popupTimeout; // Variable pour le délai de visibilité du popup
+        // Afficher au ckick
+        imgElement.addEventListener('click', () => {
+              popup.style.display = 'flex'; // Affiche le popup
+              popupDisplayState = true ;             
+        });
         // Événements pour afficher le popup lors du survol de l'image
         imgElement.addEventListener('click', () => {
             // Mettre un délai avant d'afficher le popup
